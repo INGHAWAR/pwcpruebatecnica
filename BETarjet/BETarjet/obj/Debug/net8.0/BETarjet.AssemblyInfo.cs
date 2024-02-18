@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BETarjet")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+39e1ee1358bfdbce7442ae7469eae9ff2c486a98")]
 [assembly: System.Reflection.AssemblyProductAttribute("BETarjet")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BETarjet")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
