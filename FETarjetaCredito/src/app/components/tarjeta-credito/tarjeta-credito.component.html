@@ -1,0 +1,96 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="titulo">TARJETA CREDITO</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="titulo"> {{accion | uppercase}} TARJETA</h5>
+
+                    <form [formGroup]="form" (ngSubmit)="guardarTarjeta()">
+                        <div class="input-group mb-3 input-group-lg">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-user"
+                                [class.green-icon]="this.form.get('titular')?.valid" 
+                                [class.red-icon]="this.form.get('titular')?.invalid && this.form.get('titular')?.touched"></i>
+                            </span>
+                            <input formControlName="titular" type="text" class="form-control" placeholder="Titular">
+                          </div>
+
+                          <div class="input-group mb-3 input-group-lg">
+                            <span class="input-group-text"> 
+                                <i class="fa-solid fa-credit-card" 
+                                [class.green-icon]="this.form.get('numeroTarjeta')?.valid" 
+                                [class.red-icon]="this.form.get('numeroTarjeta')?.invalid && this.form.get('numeroTarjeta')?.touched"></i>
+                            </span>
+                            <input formControlName="numeroTarjeta" (input)="soloNumeros('numeroTarjeta', $event)" maxlength="16" type="text" class="form-control" placeholder="Numero Tarjeta">
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-7">
+                                <div class="input-group mb-3 input-group-lg">
+                                    <span class="input-group-text"> 
+                                        <i class="fa-solid fa-calendar-days"
+                                        [class.green-icon]="this.form.get('fechaExpiracion')?.valid" 
+                                [class.red-icon]="this.form.get('fechaExpiracion')?.invalid && this.form.get('fechaExpiracion')?.touched"></i>
+                                    </span>
+                                    <input formControlName="fechaExpiracion" maxlength="5" type="text" class="form-control" placeholder="MM/YY">
+                                    
+                                  </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="input-group mb-3 input-group-lg">
+                                    <span class="input-group-text"> 
+                                        <i class="fa-solid fa-lock"
+                                        [class.green-icon]="this.form.get('CVV')?.valid" 
+                                [class.red-icon]="this.form.get('CVV')?.invalid && this.form.get('CVV')?.touched"></i>
+                                    </span>
+                                    <input formControlName="CVV" (input)="soloNumeros('CVV', $event)" type="password" maxlength="3" class="form-control" placeholder="CVV">
+                                  </div>
+                            </div>
+                          </div>
+                          <div class="d-grid gap-2">
+                          <button [disabled]="this.form.invalid" type="submit" class="btn btn-success btn-lg">
+                            <i class="fa-solid fa-database"></i>&nbsp; Aceptar
+                          </button>
+                          </div>
+                                                
+
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="titulo">LISTADO DE TARJETAS</h5>
+                    <table class="table">
+                        <tbody>
+                            <tr *ngFor="let tarjetas of listTarjetas; let i = index">
+                                <td>{{ tarjetas.titular }}</td>
+                                <td>{{ tarjetas.numeroTarjeta }}</td>
+                                <td>{{ tarjetas.fechaExpiracion }}</td>
+                                <td>
+                                    <i (click)="editarTarjeta(tarjetas)" class="fa-solid fa-pen-to-square text-info"></i>
+                                </td>
+                                <td>
+                                    <i (click)="eliminarTarjeta(tarjetas.id)" class="fa-solid fa-trash-can text-danger"></i>
+                                </td>
+                            </tr>
+                            
+                           
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
